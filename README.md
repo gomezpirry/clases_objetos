@@ -1,6 +1,7 @@
 # clases y objetos
 
-* Defina el diagrama de clases, el archivo de cabecera y el archivo de implementación de una calculadora:
+* Defina el diagrama de clases, el archivo de cabecera y el archivo de implementación de una calculadora
+* __Plazo de Entrega:__ Sabado 16 de febrero 11:59pm
 
 ## Subir carpeta
 
