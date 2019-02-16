@@ -4,9 +4,11 @@
 
 ## Subir carpeta
 
-* Clonar el repositorio
+* Realize un fork de este repositorio
 
-`git clone https://github.com/gomezpirry/clases_objetos`
+* Clonar el repositorio que quedo en su cuenta
+
+`git clone https://github.com/su_usuario/clases_objetos`
 
 * Acceder a la carpeta donde se encuentra el repositorio y agregar una carpeta con los códigos como nombre de la carpeta. Dentro de esta carpeta deben ir: 
   * El diagrama de clase
@@ -29,6 +31,6 @@
 
 * Despues de hacer el commit se sincronizan los cambios con el repositorio en github con:
 
-`git push https://github.com/gomezpirry/clases_objetos master`
+`git push https://github.com/su_usuario/clases_objetos master`
 
 Alli van a sincronizar el repositorio en la rama master
