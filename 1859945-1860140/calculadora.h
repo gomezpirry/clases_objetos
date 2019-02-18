@@ -2,7 +2,6 @@
 
 #ifndef CALCULADORA_H
 #define CALCULADORA_H
-#include <windows.h>
 #include <iostream>
 #include <cmath>
 
