@@ -1,29 +1,38 @@
-#include <string>
-
 #ifndef CUENTA_H_
 #define CUENTA_H_
+#include <string>
+#include <iostream>
+
 
 using namespace std;
 
 
 class Cuenta {
 
-public:
+private:
 
 	int numero;
 	string clave;
 	float saldo;
 
-	public:
+public:
+	
 	Cuenta();
 	Cuenta(int numero, string clave, float saldo);
 	~Cuenta();
 	
-	int getnumero();
-	string getclave();
-	float getsaldo();
+	int getNumero();
+	void setNumero(int numero);
+	
+	string getClave();
+	 
+	void setClave(string clave);
 
-	bool retiro (float valor);
+  
+	float getSaldo();
+  void setSaldo(float saldo);
+  
+  bool retiro (float valor);
 	void consignacion(float valor);
 	float consultar();
 	bool ingresar(int numero, string clave);
@@ -33,4 +42,3 @@ public:
 };
 
 #endif /* CUENTA_H_ */
-
