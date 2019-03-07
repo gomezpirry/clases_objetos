@@ -38,11 +38,11 @@ cursor=0:0
 open=true
 [source]
 path=Menu.cpp
-cursor=13:12
+cursor=14:16
 open=true
 [header]
 path=Estudiante.h
-cursor=0:0
+cursor=12:15
 open=true
 [header]
 path=Persona.h
@@ -50,11 +50,11 @@ cursor=30:24
 open=true
 [header]
 path=Profesor.h
-cursor=10:4
+cursor=11:15
 open=true
 [header]
 path=Curso.h
-cursor=10:12
+cursor=2:0
 open=true
 [header]
 path=Menu.h
