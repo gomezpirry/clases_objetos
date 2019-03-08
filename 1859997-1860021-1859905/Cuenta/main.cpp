@@ -40,7 +40,7 @@ int main() {
       cout << "\n 2 -> Consignar"<< endl;
       cout << "\n 3 -> Consultar"<< endl;
       cout << "\n 4 -> Cambiar Clave"<< endl;
-      cout <<"\n  5 -> SALIR "<<endl;
+      cout << "\n 5 -> SALIR "<<endl;
       cout << "\n \t Ingrese Opcion : ";
       cin >> opciones;
    
