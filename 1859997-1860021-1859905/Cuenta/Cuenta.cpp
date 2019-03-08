@@ -1,16 +1,18 @@
 #include "Cuenta.h"
+#include <string>
+
 
 Cuenta::Cuenta(){
 	numero = 0;
-	clave = "";
+	clave = " ";
 	saldo = 0;
 
 }
 
 Cuenta::Cuenta(int numero, string clave, float saldo){
-	this->numero = numero;
-	this->clave = clave;
-	this->saldo = saldo;
+	this->numero=numero;
+	this->clave=clave;
+	this->saldo=saldo;
 }
 
 Cuenta ::~Cuenta(){
@@ -49,15 +51,39 @@ bool Cuenta::ingresar(int numero, string clave){
        this-> clave = nueva;
 	}
 	
-int Cuenta::getnumero(){
+int Cuenta::getNumero(){
 	return numero;
 }
-string Cuenta::getclave(){
+string Cuenta::getClave(){
 	return clave;
 }
 
-float Cuenta::getsaldo(){
+float Cuenta::getSaldo(){
 return saldo ; 
 }
+
+void Cuenta::setNumero(int numero){
+        this->numero=numero;
+}
+
+void Cuenta::setClave(string clave){
+        this->clave=clave;
+}
+ 
+void Cuenta::setSaldo(float saldo){
+        this->saldo=saldo;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
