@@ -1,8 +1,8 @@
 /*
  * Estudiante.h
  *
- *  Created on: 1/03/2019
- *      Author: Usuario
+ *  Created on: 8/03/2019
+ *      Author: EstudianteUnivalle
  */
 
 #ifndef ESTUDIANTE_H_
@@ -12,28 +12,26 @@
 
 class Estudiante : public Persona {
 private:
-	int codigo;
-	int semestreActual;
-
+	int	 codigo;
+	int  semestre;
+	int  plan;
 public:
 	Estudiante();
-	Estudiante(int cedula, string nombre, string apellido);
+	Estudiante(string nombre, string apellido, int cedula,
+				char sexo, int telefono, int edad, bool activo,
+				int codigo, int semestre, int plan);
 	~Estudiante();
 
 	int getCodigo()  {
 		return codigo;
 	}
 
-	void setCodigo(int codigo) {
-		this->codigo = codigo;
+	int getPlan()  {
+		return plan;
 	}
 
-	int getSemestreActual()  {
-		return semestreActual;
-	}
-
-	void setSemestreActual(int semestreActual) {
-		this->semestreActual = semestreActual;
+	int getSemestre() {
+		return semestre;
 	}
 };
 

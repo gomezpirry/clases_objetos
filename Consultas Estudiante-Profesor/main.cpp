@@ -1,20 +1,16 @@
 /*
- * main.cpp
+ * mian.cpp
  *
- *  Created on: 1/03/2019
- *      Author: Usuario
+ *  Created on: 8/03/2019
+ *      Author: EstudianteUnivalle
  */
-#include "Estudiante.h"
-#include <iostream>
 
-using namespace std;
+#include "Menu.h"
 
 int main() {
+	Menu menuConsulta;
+	menuConsulta.menuPrincipal();
 
-	Estudiante* carlos = new Estudiante(123456, "Juan", "Galindo");
-	cout << carlos->getNombre() << " " << carlos->getApellido() << "\n";
-	carlos->setCodigo(987456);
 }
-
 
 

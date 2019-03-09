@@ -1,8 +1,8 @@
 /*
  * Estudiante.cpp
  *
- *  Created on: 1/03/2019
- *      Author: Usuario
+ *  Created on: 8/03/2019
+ *      Author: EstudianteUnivalle
  */
 
 #include "Estudiante.h"
@@ -12,13 +12,19 @@ Estudiante::Estudiante() {
 
 }
 
-Estudiante::Estudiante(int cedula, string nombre, string apellido) {
-	this->cedula = cedula;
-	this->nombre = nombre;
-	this->apellido = apellido;
+Estudiante::Estudiante (string nombre, string apellido, int cedula,
+		char sexo, int telefono, int edad, bool activo,
+		int codigo, int semestre, int plan) : Persona(nombre, apellido, cedula,
+				sexo, telefono, edad, activo) {
+
+	this->codigo = codigo;
+	this->semestre = semestre;
+	this->plan = plan;
 }
 
 Estudiante::~Estudiante() {
 	// TODO Auto-generated destructor stub
 }
+
+
 
