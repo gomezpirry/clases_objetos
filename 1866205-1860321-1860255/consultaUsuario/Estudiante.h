@@ -2,7 +2,6 @@
 #define ESTUDIANTE_H_
 
 #include "Persona.h"
-#include "Curso.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -10,16 +9,11 @@ using namespace std;
 class Estudiante : public Persona {
 private:
 	int codigo;
-	vector<Curso>* cursos;
 
 public:
 	Estudiante();
 	Estudiante(int cedula, string nombre, string apellido, int codigo);
 	~Estudiante();
-	
-	void setCursos(vector<Curso>* cursos){
-		this->cursos = cursos;
-	}
 
 	int getCodigo()  {
 		return codigo;
