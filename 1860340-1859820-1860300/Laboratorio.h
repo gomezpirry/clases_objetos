@@ -7,7 +7,6 @@
 #include "Estudiante.h"
 #include "Informacion.h"
 #include "Menu.h"
-#include "ManejoDeArchivo.h"
 
 
 using namespace std ;
