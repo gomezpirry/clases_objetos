@@ -9,6 +9,7 @@ int main() {
 	Laboratorio Inicio ;
 	Inicio.InicioPrograma() ;
 	
+	
 	system("pause") ;
 	return 0;
 }
