@@ -5,7 +5,6 @@
 #include <string>
 #include "Laboratorio.h"
 #include "Historial.h"
-#include "ManejoDeArchivo.h"
 
 
 using namespace std ;
