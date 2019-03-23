@@ -1,8 +1,9 @@
-/*
- * main.cpp
+/*! \mainpage Cargar/Guardar Empleados
  *
- *  Created on: 22/03/2019
- *      Author: Usuario
+ * \section Descripcion
+ *
+ * La aplicacion permita guardar y cargar la información de los empleados en archivos .csv
+ *
  */
 #include "Empleado.h"
 #include "ManejadorArchivo.h"

@@ -1,8 +1,9 @@
-/*
- * ManejadorArchivo.cpp
+/**
+ * @file   ManejadorArchivo.cpp
  *
- *  Created on: 22/03/2019
- *      Author: Usuario
+ * @date   22/03/2019
+ * @author Augusto Gomez
+ *
  */
 
 #include "ManejadorArchivo.h"
@@ -49,31 +50,23 @@ void ManejadorArchivo::cargar(string archivo, vector<Empleado> &empleados) {
   file.close () ;
 }
 
+/*! @brief Guardar empleados en un archivo .csv
+ *
+ *  revisar [ifstream::open](http://www.cplusplus.com/reference/fstream/fstream/open/)
+ *
+ * | constant      | access                                                                                   |
+ * |---------------|---------------------------------------------- -------------------------------------------|
+ * | ios::in       | File open for reading: the internal stream buffer supports input operations.             |
+ * | ios::out      | File open for writing: the internal stream buffer supports output operations.            |
+ * | ios::binary   | Operations are performed in binary mode rather than text                                 |
+ * | ios::ate      | The output position starts at the end of the file.                                       |
+ * | ios::app      | All output operations happen at the end of the file, appending to its existing content   |
+ * | ios::trunc    | Any contents that existed in the file before it is open are discarded.                   |
+ *
+ */
+
 void ManejadorArchivo::guardar(string archivo, vector<Empleado> &empleados) {
   ofstream file;
-  // revisar http://www.cplusplus.com/reference/fstream/fstream/open/
-  /*---------------------------------------------------------------
-   * constant      | access                                       |
-   * --------------------------------------------------------------
-   * ios::in       | File open for reading: the internal stream   |
-   *               | buffer supports input operations.            |
-   * --------------------------------------------------------------
-   * ios::out      | File open for writing: the internal stream   |
-   *               | buffer supports output operations.           |
-   * --------------------------------------------------------------
-   * ios::binary   | Operations are performed in binary mode      |
-   *               | rather than text                             |
-   * --------------------------------------------------------------
-   * ios::ate      | The output position starts at the end of     |
-   *               | the file.                                    |
-   * --------------------------------------------------------------
-   * ios::app      | All output operations happen at the end of   |
-   *               | the file, appending to its existing content  |
-   * --------------------------------------------------------------
-   * ios::trunc    | Any contents that existed in the file before |
-   *               | it is open are discarded.                    |
-   * --------------------------------------------------------------
-   */
   file.open(archivo.c_str(), ios::in | ios::trunc);
   for(Empleado empleado: empleados){
     file << empleado.getNombre() << ";";

@@ -14,10 +14,9 @@ using namespace std;
 
 class Empleado {
 private:
-
-  string nombre;
-  string apellido;
-  float  salario;
+  string nombre;       //!< Nombre del empleado
+  string apellido;     //!< Apellido del empleado
+  float  salario;      //!< Salario del empleado
 
 public:
 
