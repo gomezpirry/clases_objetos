@@ -14,11 +14,13 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
 class ManejadorArchivo {
 private:
+  // este metodo es privado porque solo lo usa la funcion cargar
   Empleado cargarLinea(string linea);
 
 public:

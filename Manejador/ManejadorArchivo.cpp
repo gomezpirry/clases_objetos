@@ -21,6 +21,7 @@ Empleado ManejadorArchivo::cargarLinea(string linea) {
   }
 
   Empleado empleado;
+  // descartar las filas que no tienen todos los datos
   if(palabras.size() == 3){
     empleado.setNombre(palabras[0]);
     empleado.setApellido(palabras[1]);
@@ -31,12 +32,17 @@ Empleado ManejadorArchivo::cargarLinea(string linea) {
 }
 
 void ManejadorArchivo::cargar(string archivo, vector<Empleado> &empleados) {
-  ifstream file(archivo.c_str()) ;
+  ifstream file;
+  // revisar http://www.cplusplus.com/reference/fstream/fstream/open/
+  file.open(archivo.c_str(), ios::out);
   char texto[512];
   while(!file.eof()) {
     file.getline(texto, 512);
     string texto_s(texto);
-    cout << texto_s << "\n";
+    // descartar lineas en blanco
+    if(texto_s == "") {
+      continue;
+    }
     empleados.push_back(cargarLinea(texto_s));
   }
 
@@ -44,5 +50,38 @@ void ManejadorArchivo::cargar(string archivo, vector<Empleado> &empleados) {
 }
 
 void ManejadorArchivo::guardar(string archivo, vector<Empleado> &empleados) {
-
+  ofstream file;
+  // revisar http://www.cplusplus.com/reference/fstream/fstream/open/
+  /*---------------------------------------------------------------
+   * constant      | access                                       |
+   * --------------------------------------------------------------
+   * ios::in       | File open for reading: the internal stream   |
+   *               | buffer supports input operations.            |
+   * --------------------------------------------------------------
+   * ios::out      | File open for writing: the internal stream   |
+   *               | buffer supports output operations.           |
+   * --------------------------------------------------------------
+   * ios::binary   | Operations are performed in binary mode      |
+   *               | rather than text                             |
+   * --------------------------------------------------------------
+   * ios::ate      | The output position starts at the end of     |
+   *               | the file.                                    |
+   * --------------------------------------------------------------
+   * ios::app      | All output operations happen at the end of   |
+   *               | the file, appending to its existing content  |
+   * --------------------------------------------------------------
+   * ios::trunc    | Any contents that existed in the file before |
+   *               | it is open are discarded.                    |
+   * --------------------------------------------------------------
+   */
+  file.open(archivo.c_str(), ios::in | ios::trunc);
+  for(Empleado empleado: empleados){
+    file << empleado.getNombre() << ";";
+    file << empleado.getApellido() << ";";
+    // revisar https://en.cppreference.com/w/cpp/io/manip/fixed
+    // revisar https://en.cppreference.com/w/cpp/io/manip/setprecision
+    file << fixed << setprecision(2) << empleado.getSalario() << ";";
+    file << "\n";
+  }
+  file.close();
 }
