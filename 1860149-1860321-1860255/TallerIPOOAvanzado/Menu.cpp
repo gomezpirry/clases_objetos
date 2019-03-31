@@ -52,7 +52,7 @@ void Menu::menuVehiculos() {
 			
 			cout << "1. Menu moto" << endl;
 			cout << "2. Menu coche" << endl;
-			cout << "3. Registrar camion" << endl;
+			cout << "3. Menu camion" << endl;
 			cout << "4. Atras" << endl;
 			cout << "5. Salir" << endl;
 			
@@ -68,7 +68,7 @@ void Menu::menuVehiculos() {
 				this->menuCoche();
 				break;
 			case 3:
-				this->menuRegistrarCamion();
+				this->menuCamion();
 				break;
 			case 4:
 				this->menuPrincipal();
@@ -359,7 +359,7 @@ void Menu::mostrarCoches() {
 	this->menuCoche();
 }
 
-void Menu::menuRegistrarCamion() {
+void Menu::menuCamion() {
 	system("cls");
 	do {
 		try {
@@ -369,10 +369,11 @@ void Menu::menuRegistrarCamion() {
 				cout << "1. Registrar camion con copia del anterior" << endl;
 			}
 			cout << "2. Registrar nuevo camion" << endl;
-			cout << "3. Atras" << endl;
-			cout << "4. Salir" << endl;
+			cout << "3. Mostrar camiones registrados" << endl;
+			cout << "4. Atras" << endl;
+			cout << "5. Salir" << endl;
 			
-			this->salir = 4;
+			this->salir = 5;
 			cout << "opcion: ";
 			cin >> this->opcion;
 			
@@ -384,9 +385,12 @@ void Menu::menuRegistrarCamion() {
 				this->crearCamion();
 				break;
 			case 3:
-				this->menuVehiculos();
+				this->mostrarCamiones();
 				break;
 			case 4:
+				this->menuVehiculos();
+				break;
+			case 5:
 				break;
 			default:
 				throw OpcionException();
@@ -399,9 +403,105 @@ void Menu::menuRegistrarCamion() {
 	} while(this->opcion != this->salir);
 }
 
-void Menu::crearCamionCopia() {}
+void Menu::crearCamionCopia() {
+	system("cls");
+	
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	cout << "Ingrese el numero de chasis: ";
+	int numChasis;
+	cin >> numChasis;
+	Camion* camionTemporal = new Camion(camiones.back());
+	camionTemporal->setNumChasis(numChasis);
+	camiones.push_back(*camionTemporal);
+	delete camionTemporal;
+	
+	cout << endl << "Camion registrado correctamente" << endl;
+	system("pause");
+	this->menuCamion();
+}
 
-void Menu::crearCamion(){}
+void Menu::crearCamion(){
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	Camion* camionTemporal = new Camion();
+	int numChasis, cantPuertas;
+	string marca, modelo, colorVehiculo;
+	float cilindraje, precioBaseVenta, capacidadCarga;
+	
+	cout << "Ingrese numero de chasis: ";
+	cin >> numChasis;
+	camionTemporal->setNumChasis(numChasis);
+	
+	cout << "Ingrese la marca del vehiculo: ";
+	cin >> marca;
+	camionTemporal->setMarca(marca);
+	
+	cout << "Ingrese el modelo del vehiculo: ";
+	cin >> modelo;
+	camionTemporal->setModelo(modelo);
+	
+	cout << "Ingrese el cilindraje del vehiculo: ";
+	cin >> cilindraje;
+	camionTemporal->setCilindraje(cilindraje);
+	
+	cout << "Ingrese el precio base de venta del vehiculo: ";
+	cin >> precioBaseVenta;
+	camionTemporal->setPrecioBaseVenta(precioBaseVenta);
+	
+	cout << "Desea agregar color al vehiculo?(s=si , n=no): ";
+	cin >> colorVehiculo;
+	if(colorVehiculo == "s" or colorVehiculo == "S"){
+		cout << "Color del Vehiculo: ";
+		cin >> colorVehiculo;
+		camionTemporal->setColorVehiculo(colorVehiculo);
+	}
+	
+	cout << "Viene herramientas en vehiculo?(s=si , n=no): ";
+	cin >> colorVehiculo;
+	if(colorVehiculo == "s" or colorVehiculo == "S"){
+		camionTemporal->setVienenHerramientas(true);
+	} else {
+		camionTemporal->setVienenHerramientas(false);
+	}
+	
+	cout << "Ingrese la cantidad de puertas: ";
+	cin >> cantPuertas;
+	camionTemporal->setCantPuertas(cantPuertas);
+	
+	cout << "Ingrese la capacidad de carga: ";
+	cin >> capacidadCarga;
+	camionTemporal->setCapacidadCargar(capacidadCarga);
+	
+	camionTemporal->calcularPrecioVenta();
+	this->camiones.push_back(*camionTemporal);
+	delete camionTemporal;
+	cout << "Camion creado correctamente" << endl << endl;
+	system("pause");
+	this->menuCamion();
+}
+
+void Menu::mostrarCamiones(){
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	for(unsigned int i=0; i < camiones.size(); i++){
+		cout << "marca: " << camiones[i].getMarca() << endl;
+		cout << "modelo: " << camiones[i].getModelo() << endl;
+		cout << "numChasis: " << camiones[i].getNumChasis() << endl;
+		cout << "cilindraje: " << camiones[i].getCilindraje() << endl;
+		cout << "precioBase: " << camiones[i].getPrecioBaseVenta() << endl;
+		cout << "color: " << camiones[i].getColorVehiculo() << endl;
+		cout << "herramientas: " << camiones[i].getVienenHerramientas() << endl;
+		cout << "precioVenta: " << camiones[i].getPrecioVenta() << endl;
+		cout << "numPuertas: " << camiones[i].getCantPuertas() << endl;
+		cout << "capacidadCarga: " << camiones[i].getCapacidadCarga() << endl;
+		cout << "-----------------------------------------" << endl << endl;
+	}
+	system("pause");
+	this->menuCamion();
+}
 
 void Menu::menuPersonas() {
 	system("cls");
