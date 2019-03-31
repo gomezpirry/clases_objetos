@@ -8,7 +8,7 @@ Vehiculo::~Vehiculo() {
 	
 }
 
-void Vehiculo::setnumChasis(int numChasis){
+void Vehiculo::setNumChasis(int numChasis){
 	this->numChasis = numChasis;
 }
 
@@ -25,7 +25,7 @@ void Vehiculo::setCilindraje(float cilindraje){
 }
 
 void Vehiculo::setPrecioBaseVenta(float precioBaseVenta){
-	this->precioVenta = precioVenta;
+	this->precioBaseVenta = precioBaseVenta;
 }
 
 void Vehiculo::setColorVehiculo(string colorVehiculo){
@@ -36,7 +36,7 @@ void Vehiculo::setVienenHerramientas(bool vienenHerramientas){
 	this->vienenHerramientas = vienenHerramientas;
 }
 
-int Vehiculo::getnumChasis(){
+int Vehiculo::getNumChasis(){
 	return this->numChasis;
 }
 

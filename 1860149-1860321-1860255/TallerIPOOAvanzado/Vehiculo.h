@@ -8,15 +8,15 @@ using namespace std;
 class Vehiculo {
 public:
 	Vehiculo();
-	~Vehiculo();
-	void setnumChasis(int numChasis);
+	virtual ~Vehiculo();
+	void setNumChasis(int numChasis);
 	void setMarca(string marca);
 	void setModelo(string Modelo);
 	void setCilindraje(float cilidraje);
 	void setPrecioBaseVenta(float precioBaseVenta);
 	void setColorVehiculo(string colorVehiculo);
 	void setVienenHerramientas(bool vienenHerramientas);
-	int getnumChasis();
+	int getNumChasis();
 	string getMarca();
 	string getModelo();
 	float getCilindraje();

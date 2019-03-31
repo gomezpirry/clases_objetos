@@ -19,9 +19,10 @@ public:
 	~Menu();
 	void menuPrincipal();//Muestra el menu principal
 	void menuVehiculos();//Muestra un menu para registrar cada tipo de vehiculo
-	void menuRegistrarMoto();//Permite registrar una moto nueva desde cero o con copia
+	void menuMoto();//Permite registrar una moto nueva desde cero o con copia y mostrar las registradas
 	void crearMotoCopia();//Creamos una moto con copia de la anterior
 	void crearMoto();//Creamos una moto desde cero
+	void mostrarMotos();//Muestra en pantalla las motos registradas
 	void menuRegistrarCoche();//Permite registrar un coche nuevo desde cero o con copia
 	void crearCocheCopia();//Creamos un coche con copia del anterior
 	void crearCoche();//Creamos un coche desde cero

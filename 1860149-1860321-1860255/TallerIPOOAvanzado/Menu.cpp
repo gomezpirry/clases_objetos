@@ -50,7 +50,7 @@ void Menu::menuVehiculos() {
 		try{
 			cout << "Concesionario Tulua" << endl << endl;
 			
-			cout << "1. Registrar moto" << endl;
+			cout << "1. Menu moto" << endl;
 			cout << "2. Registrar coche" << endl;
 			cout << "3. Registrar camion" << endl;
 			cout << "4. Atras" << endl;
@@ -62,7 +62,7 @@ void Menu::menuVehiculos() {
 			
 			switch(opcion){
 			case 1:
-				this->menuRegistrarMoto();
+				this->menuMoto();
 				break;
 			case 2:
 				this->menuRegistrarCoche();
@@ -86,7 +86,7 @@ void Menu::menuVehiculos() {
 	} while(this->opcion != this->salir);
 }
 
-void Menu::menuRegistrarMoto() {
+void Menu::menuMoto() {
 	system("cls");
 	do {
 		try {
@@ -96,10 +96,11 @@ void Menu::menuRegistrarMoto() {
 				cout << "1. Registrar moto con copia de la anterior" << endl;
 			}
 			cout << "2. Registrar nueva moto" << endl;
-			cout << "3. Atras" << endl;
-			cout << "4. Salir" << endl;
+			cout << "3. Mostrar motos registradas" << endl;
+			cout << "4. Atras" << endl;
+			cout << "5. Salir" << endl;
 			
-			this->salir = 4;
+			this->salir = 5;
 			cout << "opcion: ";
 			cin >> this->opcion;
 			
@@ -111,9 +112,12 @@ void Menu::menuRegistrarMoto() {
 				this->crearMoto();
 				break;
 			case 3:
-				this->menuVehiculos();
+				this->mostrarMotos();
 				break;
 			case 4:
+				this->menuVehiculos();
+				break;
+			case 5:
 				break;
 			default:
 				throw OpcionException();
@@ -126,9 +130,95 @@ void Menu::menuRegistrarMoto() {
 	} while(this->opcion != this->salir);
 }
 
-void Menu::crearMotoCopia() {}
+void Menu::crearMotoCopia() {
+	system("cls");
+	
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	cout << "Ingrese el numero de chasis: ";
+	int numChasis;
+	cin >> numChasis;
+	Moto* motoTemporal = new Moto(motos.back());
+	motoTemporal->setNumChasis(numChasis);
+	motos.push_back(*motoTemporal);
+	delete motoTemporal;
+	
+	cout << endl << "Moto registrada correctamente" << endl;
+	system("pause");
+	this->menuMoto();
+}
 
-void Menu::crearMoto(){}
+void Menu::crearMoto() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	Moto* motoTemporal = new Moto();
+	int numChasis;
+	string marca, modelo, colorVehiculo;
+	float cilindraje, precioBaseVenta;
+	
+	cout << "Ingrese numero de chasis: ";
+	cin >> numChasis;
+	motoTemporal->setNumChasis(numChasis);
+	
+	cout << "Ingrese la marca del vehiculo: ";
+	cin >> marca;
+	motoTemporal->setMarca(marca);
+	
+	cout << "Ingrese el modelo del vehiculo: ";
+	cin >> modelo;
+	motoTemporal->setModelo(modelo);
+	
+	cout << "Ingrese el cilindraje del vehiculo: ";
+	cin >> cilindraje;
+	motoTemporal->setCilindraje(cilindraje);
+	
+	cout << "Ingrese el precio base de venta del vehiculo: ";
+	cin >> precioBaseVenta;
+	motoTemporal->setPrecioBaseVenta(precioBaseVenta);
+	
+	cout << "Desea agregar color al vehiculo?(s=si , n=no): ";
+	cin >> colorVehiculo;
+	if(colorVehiculo == "s" or colorVehiculo == "S"){
+		cout << "Color del Vehiculo: ";
+		cin >> colorVehiculo;
+		motoTemporal->setColorVehiculo(colorVehiculo);
+	}
+	
+	cout << "Viene herramientas en vehiculo?(s=si , n=no): ";
+	cin >> colorVehiculo;
+	if(colorVehiculo == "s" or colorVehiculo == "S"){
+		motoTemporal->setVienenHerramientas(true);
+	} else {
+		motoTemporal->setVienenHerramientas(false);
+	}
+	
+	motoTemporal->calcularPrecioVenta();
+	this->motos.push_back(*motoTemporal);
+	delete motoTemporal;
+	cout << "Moto creada correctamente" << endl << endl;
+	system("pause");
+	this->menuMoto();
+}
+
+void Menu::mostrarMotos() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	for(int i=0; i < motos.size(); i++){
+		cout << "marca: " << motos[i].getMarca() << endl;
+		cout << "modelo: " << motos[i].getModelo() << endl;
+		cout << "numChasis: " << motos[i].getNumChasis() << endl;
+		cout << "cilindraje: " << motos[i].getCilindraje() << endl;
+		cout << "precioBase: " << motos[i].getPrecioBaseVenta() << endl;
+		cout << "color: " << motos[i].getColorVehiculo() << endl;
+		cout << "herramientas: " << motos[i].getVienenHerramientas() << endl;
+		cout << "precioVenta: " << motos[i].getPrecioVenta() << endl;
+		cout << "-----------------------------------------" << endl << endl;
+	}
+	system("pause");
+	this->menuMoto();
+}
 
 void Menu::menuRegistrarCoche() {
 	system("cls");
