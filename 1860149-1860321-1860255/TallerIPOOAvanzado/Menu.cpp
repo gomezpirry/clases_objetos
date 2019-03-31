@@ -51,7 +51,7 @@ void Menu::menuVehiculos() {
 			cout << "Concesionario Tulua" << endl << endl;
 			
 			cout << "1. Menu moto" << endl;
-			cout << "2. Registrar coche" << endl;
+			cout << "2. Menu coche" << endl;
 			cout << "3. Registrar camion" << endl;
 			cout << "4. Atras" << endl;
 			cout << "5. Salir" << endl;
@@ -65,7 +65,7 @@ void Menu::menuVehiculos() {
 				this->menuMoto();
 				break;
 			case 2:
-				this->menuRegistrarCoche();
+				this->menuCoche();
 				break;
 			case 3:
 				this->menuRegistrarCamion();
@@ -205,7 +205,7 @@ void Menu::mostrarMotos() {
 	system("cls");
 	cout << "Concesionario Tulua" << endl << endl;
 	
-	for(int i=0; i < motos.size(); i++){
+	for(unsigned int i=0; i < motos.size(); i++){
 		cout << "marca: " << motos[i].getMarca() << endl;
 		cout << "modelo: " << motos[i].getModelo() << endl;
 		cout << "numChasis: " << motos[i].getNumChasis() << endl;
@@ -220,20 +220,21 @@ void Menu::mostrarMotos() {
 	this->menuMoto();
 }
 
-void Menu::menuRegistrarCoche() {
+void Menu::menuCoche() {
 	system("cls");
 	do {
 		try {
 			cout << "Concesionario Tulua" << endl << endl;
 			
-			if (motos.size() > 0) {
+			if (coches.size() > 0) {
 				cout << "1. Registrar coche con copia del anterior" << endl;
 			}
 			cout << "2. Registrar nuevo coche" << endl;
-			cout << "3. Atras" << endl;
-			cout << "4. Salir" << endl;
+			cout << "3. Mostrar coches registrados" << endl;
+			cout << "4. Atras" << endl;
+			cout << "5. Salir" << endl;
 			
-			this->salir = 4;
+			this->salir = 5;
 			cout << "opcion: ";
 			cin >> this->opcion;
 			
@@ -245,9 +246,12 @@ void Menu::menuRegistrarCoche() {
 				this->crearCoche();
 				break;
 			case 3:
-				this->menuVehiculos();
+				this->mostrarCoches();
 				break;
 			case 4:
+				this->menuVehiculos();
+				break;
+			case 5:
 				break;
 			default:
 				throw OpcionException();
@@ -260,9 +264,100 @@ void Menu::menuRegistrarCoche() {
 	} while(this->opcion != this->salir);
 }
 
-void Menu::crearCocheCopia() {}
+void Menu::crearCocheCopia() {
+	system("cls");
+	
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	cout << "Ingrese el numero de chasis: ";
+	int numChasis;
+	cin >> numChasis;
+	Coche* cocheTemporal = new Coche(coches.back());
+	cocheTemporal->setNumChasis(numChasis);
+	coches.push_back(*cocheTemporal);
+	delete cocheTemporal;
+	
+	cout << endl << "Coche registrado correctamente" << endl;
+	system("pause");
+	this->menuCoche();
+}
 
-void Menu::crearCoche(){}
+void Menu::crearCoche(){
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	Coche* cocheTemporal = new Coche();
+	int numChasis, cantPuertas;
+	string marca, modelo, colorVehiculo;
+	float cilindraje, precioBaseVenta;
+	
+	cout << "Ingrese numero de chasis: ";
+	cin >> numChasis;
+	cocheTemporal->setNumChasis(numChasis);
+	
+	cout << "Ingrese la marca del vehiculo: ";
+	cin >> marca;
+	cocheTemporal->setMarca(marca);
+	
+	cout << "Ingrese el modelo del vehiculo: ";
+	cin >> modelo;
+	cocheTemporal->setModelo(modelo);
+	
+	cout << "Ingrese el cilindraje del vehiculo: ";
+	cin >> cilindraje;
+	cocheTemporal->setCilindraje(cilindraje);
+	
+	cout << "Ingrese el precio base de venta del vehiculo: ";
+	cin >> precioBaseVenta;
+	cocheTemporal->setPrecioBaseVenta(precioBaseVenta);
+	
+	cout << "Desea agregar color al vehiculo?(s=si , n=no): ";
+	cin >> colorVehiculo;
+	if(colorVehiculo == "s" or colorVehiculo == "S"){
+		cout << "Color del Vehiculo: ";
+		cin >> colorVehiculo;
+		cocheTemporal->setColorVehiculo(colorVehiculo);
+	}
+	
+	cout << "Viene herramientas en vehiculo?(s=si , n=no): ";
+	cin >> colorVehiculo;
+	if(colorVehiculo == "s" or colorVehiculo == "S"){
+		cocheTemporal->setVienenHerramientas(true);
+	} else {
+		cocheTemporal->setVienenHerramientas(false);
+	}
+	
+	cout << "Ingrese la cantidad de puertas: ";
+	cin >> cantPuertas;
+	cocheTemporal->setCantPuertas(cantPuertas);
+	
+	cocheTemporal->calcularPrecioVenta();
+	this->coches.push_back(*cocheTemporal);
+	delete cocheTemporal;
+	cout << "Coche creado correctamente" << endl << endl;
+	system("pause");
+	this->menuCoche();
+}
+
+void Menu::mostrarCoches() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	for(unsigned int i=0; i < coches.size(); i++){
+		cout << "marca: " << coches[i].getMarca() << endl;
+		cout << "modelo: " << coches[i].getModelo() << endl;
+		cout << "numChasis: " << coches[i].getNumChasis() << endl;
+		cout << "cilindraje: " << coches[i].getCilindraje() << endl;
+		cout << "precioBase: " << coches[i].getPrecioBaseVenta() << endl;
+		cout << "color: " << coches[i].getColorVehiculo() << endl;
+		cout << "herramientas: " << coches[i].getVienenHerramientas() << endl;
+		cout << "precioVenta: " << coches[i].getPrecioVenta() << endl;
+		cout << "numPuertas: " << coches[i].getCantPuertas() << endl;
+		cout << "-----------------------------------------" << endl << endl;
+	}
+	system("pause");
+	this->menuCoche();
+}
 
 void Menu::menuRegistrarCamion() {
 	system("cls");
@@ -270,7 +365,7 @@ void Menu::menuRegistrarCamion() {
 		try {
 			cout << "Concesionario Tulua" << endl << endl;
 			
-			if (motos.size() > 0) {
+			if (camiones.size() > 0) {
 				cout << "1. Registrar camion con copia del anterior" << endl;
 			}
 			cout << "2. Registrar nuevo camion" << endl;
@@ -315,11 +410,13 @@ void Menu::menuPersonas() {
 			cout << "Concesionario Tulua" << endl << endl;
 			
 			cout << "1. Registrar cliente" << endl;
-			cout << "2. Registrar vendedor" << endl;
-			cout << "3. Atras" << endl;
-			cout << "4. Salir" << endl;
+			cout << "2. Mostrar clientes" << endl;
+			cout << "3. Registrar vendedor" << endl;
+			cout << "4. Mostrar vendedores" << endl;
+			cout << "5. Atras" << endl;
+			cout << "6. Salir" << endl;
 			
-			this->salir = 4;
+			this->salir = 6;
 			cout << "opcion: ";
 			cin >> this->opcion;
 			
@@ -328,12 +425,18 @@ void Menu::menuPersonas() {
 				this->crearCliente();
 				break;
 			case 2:
-				this->crearVendedor();
+				this->mostrarClientes();
 				break;
 			case 3:
-				this->menuPrincipal();
+				this->crearVendedor();
 				break;
 			case 4:
+				this->mostrarVendedores();
+				break;
+			case 5:
+				this->menuPrincipal();
+				break;
+			case 6:
 				break;
 			default:
 				throw OpcionException();
@@ -348,6 +451,10 @@ void Menu::menuPersonas() {
 
 void Menu::crearCliente() {}
 
+void Menu::mostrarClientes(){}
+
 void Menu::crearVendedor() {}
+
+void Menu::mostrarVendedores() {}
 
 void Menu::crearVenta() {}

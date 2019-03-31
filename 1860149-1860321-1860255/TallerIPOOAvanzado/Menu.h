@@ -23,15 +23,18 @@ public:
 	void crearMotoCopia();//Creamos una moto con copia de la anterior
 	void crearMoto();//Creamos una moto desde cero
 	void mostrarMotos();//Muestra en pantalla las motos registradas
-	void menuRegistrarCoche();//Permite registrar un coche nuevo desde cero o con copia
+	void menuCoche();//Permite registrar un coche nuevo desde cero o con copia y mostrar los registrados
 	void crearCocheCopia();//Creamos un coche con copia del anterior
 	void crearCoche();//Creamos un coche desde cero
+	void mostrarCoches();
 	void menuRegistrarCamion();//Permite registrar un camion nuevo desde cero o con copia
 	void crearCamionCopia();//Creamos un coche con copia del anterior
 	void crearCamion();//Creamos un coche desde cero
 	void menuPersonas();//Muestra un menu para registrar cliente o vendedor
 	void crearCliente();//Creamos un cliente
+	void mostrarClientes();//Mostramos los clientes registrados
 	void crearVendedor();//Creamos un vendedor
+	void mostrarVendedores();//Mostramos los vendedores registrados
 	void crearVenta();//Creamos una venta
 private:
 	int opcion;

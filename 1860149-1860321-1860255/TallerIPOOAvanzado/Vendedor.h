@@ -7,9 +7,9 @@ class Vendedor : public Persona {
 public:
 	Vendedor();
 	~Vendedor();
-	void setVehiculosVendidos(int vehiculosVendidos);
+	void addVehiculosVendidos(int vehiculosVendidos);
 	int getVehiculosVendidos();
-	void setMontoVenta(int montoVenta);
+	void addMontoVenta(int montoVenta);
 	int getMontoVenta();
   
 private:

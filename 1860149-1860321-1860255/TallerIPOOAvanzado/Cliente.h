@@ -6,9 +6,9 @@ class Cliente : public Persona {
 public:
 	Cliente();
 	~Cliente();
-	void setVehiculosComprados(int vehiculosComprados);
+	void addVehiculosComprados(int vehiculosComprados);
 	int getVehiculosComprados();
-	void setMontoCompra(int montoCompra);
+	void addMontoCompra(int montoCompra);
 	int getMontoCompra();
 	
 private:
