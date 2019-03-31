@@ -549,12 +549,88 @@ void Menu::menuPersonas() {
 	} while(this->opcion != this->salir);
 }
 
-void Menu::crearCliente() {}
+void Menu::crearCliente() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	Cliente* clienteTemporal = new Cliente();
+	int cedula;
+	string nombre,apellido;
+	
+	cout<<"Ingrese la Cedula: ";
+	cin >> cedula;
+	clienteTemporal->setCedula(cedula);
+	
+	cout<<"Ingrese el Nombre: ";
+	cin>>nombre;
+	clienteTemporal->setNombre(nombre);
+	
+	cout<<"Ingrese el Apellido: ";
+	cin>>apellido;
+	clienteTemporal->setApellido(apellido);
+	
+	clientes.push_back(*clienteTemporal);
+	
+	cout << "Cliente creado correctamente" << endl << endl;
+	system("pause");
+	this->menuPersonas();
+}
 
-void Menu::mostrarClientes(){}
+void Menu::mostrarClientes(){
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	for(unsigned int i=0;i<clientes.size();i++){
+		cout<<"Nombre: "<<clientes[i].getNombre()<<endl;
+		cout<<"Apelldo: "<<clientes[i].getApellido()<<endl;
+		cout<<"Cedula: "<<clientes[i].getCedula()<<endl;
+		cout<<"-----------------------------------------"<<endl;
+	}
+	
+	system("pause");
+	this->menuPersonas();
+}
 
-void Menu::crearVendedor() {}
+void Menu::crearVendedor() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	Vendedor* vendedorTemporal = new Vendedor();
+	int cedula;
+	string nombre,apellido;
+	
+	cout<<"Ingrese la Cedula: ";
+	cin >> cedula;
+	vendedorTemporal->setCedula(cedula);
+	
+	cout<<"Ingrese el Nombre: ";
+	cin>>nombre;
+	vendedorTemporal->setNombre(nombre);
+	
+	cout<<"Ingreseelu Apellido: ";
+	cin>>apellido;
+	vendedorTemporal->setApellido(apellido);
+	
+	vendedores.push_back(*vendedorTemporal);
+	
+	cout << "Vendedor creado correctamente" << endl;
+	system("pause");
+	this->menuPersonas();
+}
 
-void Menu::mostrarVendedores() {}
+void Menu::mostrarVendedores() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	for(unsigned int i=0;i<vendedores.size();i++){
+		cout<<"Nombre: "<<vendedores[i].getNombre()<<endl;
+		cout<<"Apelldo: "<<vendedores[i].getApellido()<<endl;
+		cout<<"Cedula: "<<vendedores[i].getCedula()<<endl;
+		cout<<"-----------------------------------------"<<endl;
+	}
+	
+	system("pause");
+	this->menuPersonas();
+}
 
 void Menu::crearVenta() {}
