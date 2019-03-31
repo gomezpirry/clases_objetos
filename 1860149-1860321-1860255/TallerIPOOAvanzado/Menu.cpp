@@ -1,10 +1,8 @@
 #include "Menu.h"
 
-Menu::Menu() {
-}
+Menu::Menu() {}
 
-Menu::~Menu() {
-}
+Menu::~Menu() {}
 
 void Menu::menuPrincipal(){
 	system("cls");
@@ -14,7 +12,7 @@ void Menu::menuPrincipal(){
 			
 			cout << "1. Menu Vehiculos" << endl;
 			cout << "2. Menu Personas" << endl;
-			cout << "3. Registar Venta" << endl;
+			cout << "3. Menu Venta" << endl;
 			cout << "4. Salir" << endl;
 			
 			this->salir = 4;
@@ -29,7 +27,7 @@ void Menu::menuPrincipal(){
 				this->menuPersonas();
 				break;
 			case 3:
-				this->crearVenta();
+				this->menuVenta();
 				break;
 			case 4:
 				break;
@@ -633,4 +631,113 @@ void Menu::mostrarVendedores() {
 	this->menuPersonas();
 }
 
-void Menu::crearVenta() {}
+void Menu::menuVenta() {
+	system("cls");
+	do{
+		try{
+			cout << "Concesionario Tulua" << endl << endl;
+			
+			cout << "1. Registrar venta" << endl;
+			cout << "2. Mostrar ventas" << endl;
+			cout << "3. Atras" << endl;
+			cout << "4. Salir" << endl;
+			
+			this->salir = 4;
+			cout << "opcion: ";
+			cin >> this->opcion;
+			
+			switch(opcion){
+			case 1:
+				this->crearVenta();
+				break;
+			case 2:
+				this->mostrarVentas();
+				break;
+			case 3:
+				this->menuPrincipal();
+				break;
+			case 4:
+				break;
+			default:
+				throw OpcionException();
+				break;
+			}
+		} catch(OpcionException &e){
+			system("cls");
+			cout << e.what() << endl << endl;
+		}
+	} while(this->opcion != this->salir);
+}
+
+void Menu::crearVenta() {
+	
+}
+
+void Menu::mostrarVentas() {
+	system("cls");
+	cout << "Concesionario Tulua" << endl << endl;
+	
+	for(unsigned int i=0;i<ventas.size();i++){
+		cout<<"Identificador: "<<ventas[i].getIdentificador()<<endl;
+		cout<<"Vendedor: ";
+		cout <<"Cedula: "<<ventas[i].getVendedor()->getCedula();
+		cout <<" nombre: "<<ventas[i].getVendedor()->getNombre();
+		cout << " "<<ventas[i].getVendedor()->getApellido()<< endl;
+		cout<<"Cliente: ";
+		cout <<"Cedula: "<<ventas[i].getCliente()->getCedula();
+		cout <<" nombre: "<<ventas[i].getCliente()->getNombre();
+		cout << " "<<ventas[i].getCliente()->getApellido()<< endl << endl;
+		
+		
+		//Mostramos los vehiculos
+		//Motos
+		cout << "MOTOS VENDIDAS" << endl;
+		for(unsigned int j=0; j < ventas[i].getMotos()->size(); j++){
+			cout << "marca: " << (*ventas[i].getMotos())[j].getMarca() << endl;
+			cout << "modelo: " << (*ventas[i].getMotos())[j].getModelo() << endl;
+			cout << "numChasis: " << (*ventas[i].getMotos())[j].getNumChasis() << endl;
+			cout << "cilindraje: " << (*ventas[i].getMotos())[j].getCilindraje() << endl;
+			cout << "precioBase: " << (*ventas[i].getMotos())[j].getPrecioBaseVenta() << endl;
+			cout << "color: " << (*ventas[i].getMotos())[j].getColorVehiculo() << endl;
+			cout << "herramientas: " << (*ventas[i].getMotos())[j].getVienenHerramientas() << endl;
+			cout << "precioVenta: " << (*ventas[i].getMotos())[j].getPrecioVenta() << endl;
+			cout << "------" << endl << endl;
+		}
+		
+		//Coches
+		cout << "COCHES VENDIDOS" << endl;
+		for(unsigned int j=0; j < ventas[i].getCoches()->size(); j++){
+			cout << "marca: " << (*ventas[i].getCoches())[j].getMarca() << endl;
+			cout << "modelo: " << (*ventas[i].getCoches())[j].getModelo() << endl;
+			cout << "numChasis: " << (*ventas[i].getCoches())[j].getNumChasis() << endl;
+			cout << "cilindraje: " << (*ventas[i].getCoches())[j].getCilindraje() << endl;
+			cout << "precioBase: " << (*ventas[i].getCoches())[j].getPrecioBaseVenta() << endl;
+			cout << "color: " << (*ventas[i].getCoches())[j].getColorVehiculo() << endl;
+			cout << "herramientas: " << (*ventas[i].getCoches())[j].getVienenHerramientas() << endl;
+			cout << "precioVenta: " << (*ventas[i].getCoches())[j].getPrecioVenta() << endl;
+			cout << "numPuertas: " << (*ventas[i].getCoches())[j].getCantPuertas() << endl;
+			cout << "------" << endl << endl;
+		}
+		
+		//Camiones
+		cout << "CAMIONES VENDIDOS" << endl;
+		for(unsigned int j=0; j < ventas[i].getCamiones()->size(); j++){
+			cout << "marca: " << (*ventas[i].getCamiones())[j].getMarca() << endl;
+			cout << "modelo: " << (*ventas[i].getCamiones())[j].getModelo() << endl;
+			cout << "numChasis: " << (*ventas[i].getCamiones())[j].getNumChasis() << endl;
+			cout << "cilindraje: " << (*ventas[i].getCamiones())[j].getCilindraje() << endl;
+			cout << "precioBase: " << (*ventas[i].getCamiones())[j].getPrecioBaseVenta() << endl;
+			cout << "color: " << (*ventas[i].getCamiones())[j].getColorVehiculo() << endl;
+			cout << "herramientas: " << (*ventas[i].getCamiones())[j].getVienenHerramientas() << endl;
+			cout << "precioVenta: " << (*ventas[i].getCamiones())[j].getPrecioVenta() << endl;
+			cout << "numPuertas: " << (*ventas[i].getCamiones())[j].getCantPuertas() << endl;
+			cout << "capacidadCarga: " << (*ventas[i].getCamiones())[j].getCapacidadCarga() << endl;
+			cout << "------" << endl << endl;
+		}
+		
+		cout<<"-----------------------------------------"<<endl;
+	}
+	
+	system("pause");
+	this->menuVenta();
+}

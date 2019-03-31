@@ -46,7 +46,9 @@ public:
 	void mostrarVendedores();//Mostramos los vendedores registrados
 	
 	//VENTAS
-	void crearVenta();//Creamos una venta
+	void menuVenta();//Muestra un menu para registar ventas o mostar las registradas
+	void crearVenta();//Registramos una venta
+	void mostrarVentas();//Mostramos las ventas registradas
 private:
 	int opcion;
 	int salir;

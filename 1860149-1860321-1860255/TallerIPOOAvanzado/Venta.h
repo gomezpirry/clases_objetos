@@ -2,7 +2,10 @@
 #define VENTA_H
 
 #include <vector>
-#include "Vehiculo.h"
+#include <stdlib.h>
+#include "Moto.h"
+#include "Coche.h"
+#include "Camion.h"
 #include "Vendedor.h"
 #include "Cliente.h"
 
@@ -13,8 +16,12 @@ public:
 	Venta();
 	~Venta();
 	int getIdentificador();
-	void setVehiculos(vector<Vehiculo>* vehiculos);
-	vector<Vehiculo>* getVehiculos();
+	void setMotos(vector<Moto>* motos);
+	void setCoches(vector<Coche>* coches);
+	void setCamiones(vector<Camion>* camiones);
+	vector<Moto>* getMotos();
+	vector<Coche>* getCoches();
+	vector<Camion>* getCamiones();
 	void setVendedor(Vendedor* vendedor);
 	Vendedor* getVendedor();
 	void setCliente(Cliente* cliente);
@@ -22,7 +29,9 @@ public:
 	
 private:
 	int identificador;
-     vector<Vehiculo>* vehiculos;
+	vector<Moto>* motos;
+	vector<Coche>* coches;
+	vector<Camion>* camiones;
 	Vendedor* vendedor;
 	Cliente* cliente;
 };
