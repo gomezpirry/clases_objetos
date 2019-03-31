@@ -10,27 +10,27 @@ int Venta::getIdentificador(){
 	return this->identificador;
 }
 
-void Venta::setMotos(vector<Moto>* motos){
+void Venta::setMotos(vector<Moto*> motos){
 	this->motos = motos;
 }
 
-vector<Moto>* Venta::getMotos(){
+vector<Moto*> Venta::getMotos(){
 	return this->motos;
 }
 
-void Venta::setCoches(vector<Coche>* coches){
+void Venta::setCoches(vector<Coche*> coches){
 	this->coches = coches;
 }
 
-vector<Coche>* Venta::getCoches(){
+vector<Coche*> Venta::getCoches(){
 	return this->coches;
 }
 
-void Venta::setCamiones(vector<Camion>* camiones){
+void Venta::setCamiones(vector<Camion*> camiones){
 	this->camiones = camiones;
 }
 
-vector<Camion>* Venta::getCamiones(){
+vector<Camion*> Venta::getCamiones(){
 	return this->camiones;
 }
 
